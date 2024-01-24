@@ -4,9 +4,9 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.snomed.otf</groupId>
+	<groupId>com.b2international</groupId>
 	<artifactId>snomed-owl-toolkit</artifactId>
-	<version>3.0.6</version>
+	<version>3.0.106-SNAPSHOT</version>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -17,6 +17,11 @@
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- Artifact distribution -->
+		<maven.repository.id>nexus_deployment</maven.repository.id>
+		<maven.releases.repository>https://nexus.b2i.sg/repository/maven-releases</maven.releases.repository>
+		<maven.snapshots.repository>https://nexus.b2i.sg/repository/maven-snapshots</maven.snapshots.repository>
 	</properties>
 
 	<dependencies>
@@ -183,17 +188,15 @@
 			<url>https://jcenter.bintray.com/</url>
 		</repository>
 	</repositories>
-
+	
 	<distributionManagement>
 		<repository>
-			<id>ihtsdo-public-nexus</id>
-			<name>IHTSDO Public Nexus Releases</name>
-			<url>https://nexus3.ihtsdotools.org/repository/maven-releases/</url>
+			<id>${maven.repository.id}</id>
+			<url>${maven.releases.repository}</url>
 		</repository>
 		<snapshotRepository>
-			<id>ihtsdo-public-nexus</id>
-			<name>IHTSDO Public Nexus Snapshots</name>
-			<url>https://nexus3.ihtsdotools.org/repository/maven-snapshots/</url>
+			<id>${maven.repository.id}</id>
+			<url>${maven.snapshots.repository}</url>
 		</snapshotRepository>
 	</distributionManagement>
 
