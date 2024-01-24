@@ -1,6 +1,7 @@
 target
 .*
 !.launch
+!.mvn
 *.iml
 *.zip
 /*.txt
