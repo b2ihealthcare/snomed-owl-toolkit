@@ -29,7 +29,7 @@ public class AxiomDeserialiser {
 	private final OWLOntologyManager owlOntologyManager;
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	AxiomDeserialiser() {
+	public AxiomDeserialiser() {
 		owlOntologyManager = OWLManager.createOWLOntologyManager();
 		try {
 			owlOntology = owlOntologyManager.loadOntologyFromOntologyDocument(

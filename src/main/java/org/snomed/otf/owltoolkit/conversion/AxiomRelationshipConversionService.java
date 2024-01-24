@@ -1,35 +1,37 @@
 package org.snomed.otf.owltoolkit.conversion;
 
-import org.semanticweb.owlapi.model.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.snomed.otf.owltoolkit.constants.Concepts;
-import org.snomed.otf.owltoolkit.domain.*;
-import org.snomed.otf.owltoolkit.ontology.OntologyHelper;
-import org.snomed.otf.owltoolkit.ontology.OntologyService;
-import org.snomed.otf.owltoolkit.taxonomy.SnomedTaxonomyLoader;
+import static org.snomed.otf.owltoolkit.ontology.OntologyService.CORE_COMPONENT_NAMESPACE_PATTERN;
+import static org.snomed.otf.owltoolkit.ontology.OntologyService.SNOMED_ROLE_GROUP_FULL_URI;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-import static org.snomed.otf.owltoolkit.ontology.OntologyService.CORE_COMPONENT_NAMESPACE_PATTERN;
-
-import static org.snomed.otf.owltoolkit.ontology.OntologyService.SNOMED_ROLE_GROUP_FULL_URI;
+import org.semanticweb.owlapi.model.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.snomed.otf.owltoolkit.constants.Concepts;
+import org.snomed.otf.owltoolkit.domain.AxiomRepresentation;
+import org.snomed.otf.owltoolkit.domain.ObjectPropertyAxiomRepresentation;
+import org.snomed.otf.owltoolkit.domain.Relationship;
+import org.snomed.otf.owltoolkit.ontology.OntologyHelper;
+import org.snomed.otf.owltoolkit.ontology.OntologyService;
+import org.snomed.otf.owltoolkit.taxonomy.AxiomDeserialiser;
 
 public class AxiomRelationshipConversionService {
 
-	private final SnomedTaxonomyLoader snomedTaxonomyLoader;
+	private static final Logger LOGGER = LoggerFactory.getLogger(AxiomRelationshipConversionService.class);
+
+	private final AxiomDeserialiser axiomDeserialiser;
 	private final OntologyService ontologyService;
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(AxiomRelationshipConversionService.class);
 	private Collection<Long> objectAttributes;
 	private Collection<Long> dataAttributes;
 	private Collection<Long> annotationAttributes;
 
 	public AxiomRelationshipConversionService(Set<Long> ungroupedAttributes) {
-		snomedTaxonomyLoader = new SnomedTaxonomyLoader();
-		ontologyService = new OntologyService(ungroupedAttributes);
+		this.axiomDeserialiser = new AxiomDeserialiser();
+		this.ontologyService = new OntologyService(ungroupedAttributes);
 	}
 
 	/**
@@ -39,8 +41,7 @@ public class AxiomRelationshipConversionService {
 	 * @param dataAttributes A set of concept identifiers from the descendants of 762706009 |Concept model data attribute (attribute)|.
 	 */
 	public AxiomRelationshipConversionService(Set<Long> ungroupedAttributes, Collection<Long> objectAttributes, Collection<Long> dataAttributes) {
-		snomedTaxonomyLoader = new SnomedTaxonomyLoader();
-		ontologyService = new OntologyService(ungroupedAttributes);
+		this(ungroupedAttributes);
 		this.objectAttributes = objectAttributes;
 		this.dataAttributes = dataAttributes;
 	}
@@ -301,7 +302,7 @@ public class AxiomRelationshipConversionService {
 	private OWLAxiom convertOwlExpressionToOWLAxiom(String axiomExpression) throws ConversionException {
 		OWLAxiom owlAxiom;
 		try {
-			owlAxiom = snomedTaxonomyLoader.deserialiseAxiom(axiomExpression);
+			owlAxiom = axiomDeserialiser.deserialiseAxiom(axiomExpression, null);
 		} catch (OWLOntologyCreationException e) {
 			throw new ConversionException("Failed to deserialise axiom expression '" + axiomExpression + "'.");
 		}
