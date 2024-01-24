@@ -69,6 +69,14 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
+			<version>6.1.3</version>
+		</dependency>
+		
+		<!-- Security vulnerability fixes -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+    		<artifactId>httpclient</artifactId>
+    		<version>4.5.14</version>
 		</dependency>
 
 		<!-- Testing -->
