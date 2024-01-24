@@ -75,8 +75,13 @@
 		<!-- Security vulnerability fixes -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
-    		<artifactId>httpclient</artifactId>
-    		<version>4.5.14</version>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.14</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient-cache</artifactId>
+			<version>4.5.14</version>
 		</dependency>
 
 		<!-- Testing -->
@@ -90,9 +95,9 @@
 	<build>
 		<plugins>
 			<!--
-               Add the Add-Opens to the manifest file to allow snomed-owl-toolkit to work with java 17
-               Remove this when the owl-api is updated to use version 5
-           -->
+				Add the Add-Opens to the manifest file to allow snomed-owl-toolkit to work with java 17
+				Remove this when the owl-api is updated to use version 5
+			-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
