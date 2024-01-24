@@ -18,4 +18,10 @@ public class SnomedPrefixManager extends DefaultPrefixManager {
 		}
 		return null;
 	}
+	
+	@Override
+	public String getPrefixIRIIgnoreQName(IRI iri) {
+		return getPrefixIRI(iri);
+	}
+	
 }
