@@ -4,15 +4,22 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.snomed.otf</groupId>
+	<groupId>com.b2international</groupId>
 	<artifactId>snomed-owl-toolkit</artifactId>
-	<version>5.1.0</version>
+	<version>5.1.1-SNAPSHOT</version>
 
 	<parent>
 		<groupId>org.snomed</groupId>
 		<artifactId>snomed-parent-bom</artifactId>
 		<version>3.1.0</version>
 	</parent>
+
+	<properties>
+		<!-- Artifact distribution -->
+		<maven.repository.id>nexus_deployment</maven.repository.id>
+		<maven.releases.repository>https://nexus.b2i.sg/repository/maven-releases</maven.releases.repository>
+		<maven.snapshots.repository>https://nexus.b2i.sg/repository/maven-snapshots</maven.snapshots.repository>
+	</properties>
 
 	<dependencies>
 		<!-- RF2 Loading -->
@@ -160,5 +167,16 @@
 			<url>https://nexus3.ihtsdotools.org/repository/maven-snapshots/</url>
 		</repository>
 	</repositories>
+	
+	<distributionManagement>
+		<repository>
+			<id>${maven.repository.id}</id>
+			<url>${maven.releases.repository}</url>
+		</repository>
+		<snapshotRepository>
+			<id>${maven.repository.id}</id>
+			<url>${maven.snapshots.repository}</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>
