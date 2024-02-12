@@ -74,6 +74,11 @@
 			<artifactId>spring-core</artifactId>
 			<version>6.1.3</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jcl</artifactId>
+			<version>6.1.3</version>
+		</dependency>
 		
 		<!-- Security vulnerability fixes -->
 		<dependency>
