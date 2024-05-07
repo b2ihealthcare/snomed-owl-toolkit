@@ -35,7 +35,7 @@ try {
 
 		stage('Build') {
 
-			withMaven(jdk: 'OpenJDK_8', mavenSettingsConfig: custom_maven_settings, publisherStrategy: 'EXPLICIT', traceability: true) {
+			withMaven(jdk: 'OpenJDK_8', globalMavenSettingsConfig: custom_maven_settings, publisherStrategy: 'EXPLICIT', traceability: true) {
 				sh "./mvnw clean ${mavenPhase} -Dmaven.test.skip=${skipTests} -Dmaven.install.skip=true"
 			}
 
