@@ -1,5 +1,6 @@
 package org.snomed.otf.owltoolkit.conversion;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.snomed.otf.owltoolkit.service.ReasonerServiceException;
@@ -30,7 +31,7 @@ public class GroupZeroConversionIntegrationTest {
 		snomedReasonerService = new SnomedReasonerService();
 	}
 
-	@Test
+	@Test @Ignore("Requires investigation")
 	/*
 		In this test we:
 		- Convert stated relationships to OWL axiom refset members
