@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.b2international</groupId>
@@ -17,8 +17,8 @@
 	<properties>
 		<!-- Artifact distribution -->
 		<maven.repository.id>nexus_deployment</maven.repository.id>
-		<maven.releases.repository>https://nexus.b2i.sg/repository/maven-releases</maven.releases.repository>
-		<maven.snapshots.repository>https://nexus.b2i.sg/repository/maven-snapshots</maven.snapshots.repository>
+		<maven.releases.repository>https://artifacts.b2ihealthcare.com/repository/maven-releases</maven.releases.repository>
+		<maven.snapshots.repository>https://artifacts.b2ihealthcare.com/repository/maven-snapshots</maven.snapshots.repository>
 	</properties>
 
 	<dependencies>
@@ -79,7 +79,7 @@
 			<artifactId>spring-jcl</artifactId>
 			<version>6.1.3</version>
 		</dependency>
-		
+
 		<!-- Security vulnerability fixes -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -188,7 +188,7 @@
 			<url>https://nexus3.ihtsdotools.org/repository/maven-snapshots/</url>
 		</repository>
 	</repositories>
-	
+
 	<distributionManagement>
 		<repository>
 			<id>${maven.repository.id}</id>
