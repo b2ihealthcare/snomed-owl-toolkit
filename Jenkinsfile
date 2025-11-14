@@ -13,7 +13,7 @@ try {
 	def branch
 	def mavenPhase = params.skipDeploy ? "verify" : "deploy"
 
-	slack.notifyBuild()
+	chat.notifyBuild()
 
 	node('build-jdk17-isolated') {
 
@@ -50,5 +50,5 @@ try {
 	currentBuild.result = "FAILURE"
 	throw e
 } finally {
-	slack.notifyBuild(currentBuild.result)
+	chat.notifyBuild(currentBuild.result)
 }
